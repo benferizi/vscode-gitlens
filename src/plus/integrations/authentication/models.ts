@@ -41,6 +41,7 @@ export interface CloudIntegrationConnection {
 	domain: string;
 }
 
+<<<<<<< HEAD
 export type CloudIntegrationType =
 	| 'jira'
 	| 'trello'
@@ -50,6 +51,9 @@ export type CloudIntegrationType =
 	| 'azure'
 	| 'githubEnterprise'
 	| 'gitlabSelfHosted';
+=======
+export type CloudIntegrationType = 'jira' | 'trello' | 'gitlab' | 'github' | 'bitbucket' | 'azure' | 'githubEnterprise';
+>>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
 
 export type CloudIntegrationAuthType = 'oauth' | 'pat';
 
@@ -71,7 +75,10 @@ export const toIntegrationId: { [key in CloudIntegrationType]: IntegrationId } =
 	gitlab: HostingIntegrationId.GitLab,
 	github: HostingIntegrationId.GitHub,
 	githubEnterprise: SelfHostedIntegrationId.CloudGitHubEnterprise,
+<<<<<<< HEAD
 	gitlabSelfHosted: SelfHostedIntegrationId.CloudGitLabSelfHosted,
+=======
+>>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
 	bitbucket: HostingIntegrationId.Bitbucket,
 	azure: HostingIntegrationId.AzureDevOps,
 };
@@ -84,7 +91,10 @@ export const toCloudIntegrationType: { [key in IntegrationId]: CloudIntegrationT
 	[HostingIntegrationId.Bitbucket]: 'bitbucket',
 	[HostingIntegrationId.AzureDevOps]: 'azure',
 	[SelfHostedIntegrationId.CloudGitHubEnterprise]: 'githubEnterprise',
+<<<<<<< HEAD
 	[SelfHostedIntegrationId.CloudGitLabSelfHosted]: 'gitlabSelfHosted',
+=======
+>>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
 	[SelfHostedIntegrationId.GitHubEnterprise]: undefined,
 	[SelfHostedIntegrationId.GitLabSelfHosted]: undefined,
 };

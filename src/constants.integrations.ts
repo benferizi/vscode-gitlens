@@ -8,7 +8,10 @@ export enum HostingIntegrationId {
 export enum SelfHostedIntegrationId {
 	GitHubEnterprise = 'github-enterprise',
 	CloudGitHubEnterprise = 'cloud-github-enterprise',
+<<<<<<< HEAD
 	CloudGitLabSelfHosted = 'cloud-gitlab-self-hosted',
+=======
+>>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
 	GitLabSelfHosted = 'gitlab-self-hosted',
 }
 
@@ -25,6 +28,7 @@ export type IntegrationId = HostingIntegrationId | IssueIntegrationId | SelfHost
 
 export const supportedOrderedCloudIssueIntegrationIds = [IssueIntegrationId.Jira];
 export const supportedOrderedCloudIntegrationIds = [
+	SelfHostedIntegrationId.CloudGitHubEnterprise,
 	HostingIntegrationId.GitHub,
 	SelfHostedIntegrationId.CloudGitHubEnterprise,
 	HostingIntegrationId.GitLab,

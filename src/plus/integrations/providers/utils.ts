@@ -12,7 +12,18 @@ import type { IssueResourceDescriptor, RepositoryDescriptor } from '../integrati
 import { isIssueResourceDescriptor, isRepositoryDescriptor } from '../integration';
 import type { AzureProjectInputDescriptor } from './azure/models';
 import type { GitConfigEntityIdentifier } from './models';
+<<<<<<< HEAD
 import { isCloudSelfHostedIntegrationId, isGitHubDotCom, isGitLabDotCom } from './models';
+=======
+
+export function isGitHubDotCom(domain: string): boolean {
+	return equalsIgnoreCase(domain, 'github.com');
+}
+
+function isGitLabDotCom(domain: string): boolean {
+	return equalsIgnoreCase(domain, 'gitlab.com');
+}
+>>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
 
 function isLaunchpadItem(item: IssueOrPullRequest | LaunchpadItem): item is LaunchpadItem {
 	return (item as LaunchpadItem).uuid !== undefined;
