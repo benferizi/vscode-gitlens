@@ -69,6 +69,12 @@ export const supportedCloudIntegrationDescriptors: IntegrationDescriptor[] = [
 		requiresPro: true,
 	},
 	{
+		id: SelfHostedIntegrationId.CloudGitHubEnterprise,
+		name: 'GitHub Enterprise',
+		icon: 'gl-provider-github',
+		supports: ['prs', 'issues'],
+	},
+	{
 		id: HostingIntegrationId.GitLab,
 		name: 'GitLab',
 		icon: 'gl-provider-gitlab',
