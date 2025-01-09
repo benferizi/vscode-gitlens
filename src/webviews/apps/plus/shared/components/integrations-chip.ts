@@ -188,13 +188,21 @@ export class GLIntegrationsChip extends LitElement {
 
 	override render(): unknown {
 		const anyConnected = this.hasConnectedIntegrations;
+<<<<<<< HEAD
 		const statusFilter = createStatusIconFilter(this.integrations);
 
+=======
+		const statusFilter = createIconBasedStatusFilter(this.integrations);
+>>>>>>> b33027c9e (Filters out GitHub's icon in the bar)
 		return html`<gl-popover placement="bottom" trigger="hover click focus" hoist>
 			<span slot="anchor" class="chip" tabindex="0"
 				>${!anyConnected ? html`<span class="chip__label">Connect</span>` : ''}${this.integrations
 					.filter(statusFilter)
+<<<<<<< HEAD
 					.map(i => this.renderIntegrationStatus(i))}${this.renderAIStatus()}</span
+=======
+					.map(i => this.renderIntegrationStatus(i, anyConnected))}</span
+>>>>>>> b33027c9e (Filters out GitHub's icon in the bar)
 			>
 			<div slot="content" class="content">
 				<div class="header">
@@ -401,4 +409,31 @@ function createStatusIconFilter(integrations: IntegrationState[]) {
 	}
 
 	return (integration: IntegrationState) => groupedIconMap.get(integration.icon) === integration;
+}
+
+function createIconBasedStatusFilter(integrations: IntegrationState[]) {
+	const nothing = -1;
+	const icons = integrations.reduce<{
+		[key: string]: undefined | { connectedIndex: number; firstIndex: number };
+	}>((icons, i, index) => {
+		const state = icons[i.icon];
+		if (!state) {
+			icons[i.icon] = { connectedIndex: i.connected ? index : nothing, firstIndex: index };
+		} else if (i.connected && state.connectedIndex === nothing) {
+			state.connectedIndex = index;
+		}
+		return icons;
+	}, {});
+
+	// This filter returns true or false to allow or decline the integration.
+	// If nothing is connected with the same icon then allows the first one.
+	// If any connected then allows the first connected.
+	return function filter(i: IntegrationState, index: number) {
+		const state = icons[i.icon];
+		if (state === undefined) return true;
+		if (state.connectedIndex !== nothing) {
+			return state.connectedIndex === index;
+		}
+		return state.firstIndex === index;
+	};
 }
