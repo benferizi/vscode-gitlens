@@ -287,8 +287,11 @@ export class IntegrationService implements Disposable {
 			for (const integrationId of integrationIds) {
 				try {
 					const integration = await this.get(integrationId);
+<<<<<<< HEAD
 					if (integration == null) continue;
 
+=======
+>>>>>>> 97f89b4d6 (Makes sure that cloud version of GitHubEnterprise is used when needed)
 					if (integration.maybeConnected ?? (await integration.isConnected())) {
 						connectedIntegrations.add(integrationId);
 					}
@@ -531,12 +534,16 @@ export class IntegrationService implements Disposable {
 					break;
 				case SelfHostedIntegrationId.CloudGitHubEnterprise:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 97f89b4d6 (Makes sure that cloud version of GitHubEnterprise is used when needed)
 					if (domain == null) {
 						integration = this.findCachedById(id);
 						if (integration != null) {
 							// return immediately in order to not to cache it after the "switch" block:
 							return integration;
 						}
+<<<<<<< HEAD
 
 						const existingConfigured = await this.getConfigured({
 							id: SelfHostedIntegrationId.CloudGitHubEnterprise,
@@ -561,6 +568,10 @@ export class IntegrationService implements Disposable {
 						return undefined;
 					}
 
+=======
+						throw new Error(`Domain is required for '${id}' integration`);
+					}
+>>>>>>> 97f89b4d6 (Makes sure that cloud version of GitHubEnterprise is used when needed)
 					integration = new (
 						await import(/* webpackChunkName: "integrations" */ './providers/github')
 					).GitHubEnterpriseIntegration(
@@ -571,8 +582,11 @@ export class IntegrationService implements Disposable {
 						id,
 					);
 					break;
+<<<<<<< HEAD
 =======
 >>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
+=======
+>>>>>>> 97f89b4d6 (Makes sure that cloud version of GitHubEnterprise is used when needed)
 				case SelfHostedIntegrationId.GitHubEnterprise:
 					if (domain == null) throw new Error(`Domain is required for '${id}' integration`);
 					integration = new (
