@@ -378,7 +378,11 @@ or
 ```typescript
 {
   'hostingProvider.key': string,
+<<<<<<< HEAD
   'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted'
+=======
+  'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted'
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 }
 ```
 
@@ -389,7 +393,11 @@ or
 ```typescript
 {
   'hostingProvider.key': string,
+<<<<<<< HEAD
   'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted'
+=======
+  'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted'
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 }
 ```
 
@@ -400,7 +408,11 @@ or
 ```typescript
 {
   'issueProvider.key': string,
+<<<<<<< HEAD
   'issueProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted'
+=======
+  'issueProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted'
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 }
 ```
 
@@ -411,7 +423,11 @@ or
 ```typescript
 {
   'issueProvider.key': string,
+<<<<<<< HEAD
   'issueProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted'
+=======
+  'issueProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted'
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 }
 ```
 
@@ -432,7 +448,11 @@ or
 
 ```typescript
 {
+<<<<<<< HEAD
   'integration.id': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted'
+=======
+  'integration.id': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted'
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 }
 ```
 
@@ -1552,7 +1572,11 @@ void
 ```typescript
 {
   'hostingProvider.key': string,
+<<<<<<< HEAD
   'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted',
+=======
+  'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted',
+>>>>>>> c0867fe13 (Updates (minor) from code review)
   // @deprecated: true
   'remoteProviders.key': string
 }
@@ -1565,7 +1589,11 @@ void
 ```typescript
 {
   'hostingProvider.key': string,
+<<<<<<< HEAD
   'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'cloud-gitlab-self-hosted' | 'gitlab-self-hosted',
+=======
+  'hostingProvider.provider': 'github' | 'gitlab' | 'bitbucket' | 'azureDevOps' | 'jira' | 'trello' | 'github-enterprise' | 'cloud-github-enterprise' | 'gitlab-self-hosted',
+>>>>>>> c0867fe13 (Updates (minor) from code review)
   // @deprecated: true
   'remoteProviders.key': string
 }

@@ -28,7 +28,6 @@ export type IntegrationId = HostingIntegrationId | IssueIntegrationId | SelfHost
 
 export const supportedOrderedCloudIssueIntegrationIds = [IssueIntegrationId.Jira];
 export const supportedOrderedCloudIntegrationIds = [
-	SelfHostedIntegrationId.CloudGitHubEnterprise,
 	HostingIntegrationId.GitHub,
 	SelfHostedIntegrationId.CloudGitHubEnterprise,
 	HostingIntegrationId.GitLab,

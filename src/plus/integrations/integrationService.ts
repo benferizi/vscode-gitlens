@@ -116,7 +116,6 @@ export class IntegrationService implements Disposable {
 		const domainsById = new Map<IntegrationId, string>();
 
 		const loggedIn = await this.container.subscription.getAuthenticationSession();
-		const domains = new Map<string, string>();
 		if (loggedIn) {
 			const cloudIntegrations = await this.container.cloudIntegrations;
 			const connections = await cloudIntegrations?.getConnections();
@@ -131,10 +130,14 @@ export class IntegrationService implements Disposable {
 					try {
 						const host = new URL(p.domain).host;
 <<<<<<< HEAD
+<<<<<<< HEAD
 						domainsById.set(integrationId, host);
 =======
 						domains.set(integrationId, host);
 >>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
+=======
+						domainsById.set(integrationId, host);
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 					} catch {
 						Logger.warn(`Invalid domain for ${integrationId} integration: ${p.domain}. Ignoring.`, scope);
 					}
@@ -143,10 +146,14 @@ export class IntegrationService implements Disposable {
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for await (const integration of this.getSupportedCloudIntegrations(domainsById)) {
 =======
 		for await (const integration of this.getSupportedCloudIntegrations(domains)) {
 >>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
+=======
+		for await (const integration of this.getSupportedCloudIntegrations(domainsById)) {
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 			await integration.syncCloudConnection(
 				connectedIntegrations.has(integration.id) ? 'connected' : 'disconnected',
 				forceConnect,
@@ -165,6 +172,7 @@ export class IntegrationService implements Disposable {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private async *getSupportedCloudIntegrations(domainsById: Map<IntegrationId, string>): AsyncIterable<Integration> {
 		for (const id of getSupportedCloudIntegrationIds()) {
 			if (isCloudSelfHostedIntegrationId(id) && !domainsById.has(id)) {
@@ -180,8 +188,11 @@ export class IntegrationService implements Disposable {
 				}
 =======
 	private async *getSupportedCloudIntegrations(domains: Map<string, string>): AsyncIterable<Integration> {
+=======
+	private async *getSupportedCloudIntegrations(domainsById: Map<IntegrationId, string>): AsyncIterable<Integration> {
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 		for (const id of getSupportedCloudIntegrationIds()) {
-			if (id === SelfHostedIntegrationId.CloudGitHubEnterprise && !domains.has(id)) {
+			if (id === SelfHostedIntegrationId.CloudGitHubEnterprise && !domainsById.has(id)) {
 				try {
 					// Try getting whatever we have now because we will need to disconnect
 					yield this.get(id);
@@ -190,8 +201,12 @@ export class IntegrationService implements Disposable {
 					// because we probably haven't ever had an instance of this integration
 				}
 			} else {
+<<<<<<< HEAD
 				yield this.get(id, domains?.get(id));
 >>>>>>> b8dd1b074 (Adds support for GKDev Cloud GitHub Enterprise integration)
+=======
+				yield this.get(id, domainsById.get(id));
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 			}
 		}
 	}
@@ -734,6 +749,7 @@ export class IntegrationService implements Disposable {
 				}
 				return (getOrGetCached === this.get ? Promise.resolve(undefined) : undefined) as RT;
 			case 'github':
+<<<<<<< HEAD
 				if (remote.provider.domain != null && !isGitHubDotCom(remote.provider.domain)) {
 					return get(
 						remote.provider.custom
@@ -742,8 +758,15 @@ export class IntegrationService implements Disposable {
 						remote.provider.domain,
 					) as RT;
 				}
+=======
+>>>>>>> c0867fe13 (Updates (minor) from code review)
 				if (remote.provider.domain != null && !isGitHubDotCom(remote.provider.domain)) {
-					return get(SelfHostedIntegrationId.CloudGitHubEnterprise, remote.provider.domain) as RT;
+					return get(
+						remote.provider.custom
+							? SelfHostedIntegrationId.GitHubEnterprise
+							: SelfHostedIntegrationId.CloudGitHubEnterprise,
+						remote.provider.domain,
+					) as RT;
 				}
 				return get(HostingIntegrationId.GitHub) as RT;
 			case 'gitlab':
