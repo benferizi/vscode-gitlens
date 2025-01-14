@@ -23,6 +23,7 @@ import { promisifyDeferred, take } from '../../system/event';
 import { filterMap, flatten, join } from '../../system/iterable';
 import { Logger } from '../../system/logger';
 import { getLogScope } from '../../system/logger.scope';
+<<<<<<< HEAD
 import type { SubscriptionChangeEvent } from '../gk/subscriptionService';
 import type {
 	ConfiguredIntegrationsChangeEvent,
@@ -30,6 +31,13 @@ import type {
 } from './authentication/configuredIntegrationService';
 import type { IntegrationAuthenticationService } from './authentication/integrationAuthenticationService';
 import type { ConfiguredIntegrationDescriptor } from './authentication/models';
+=======
+import { configuration } from '../../system/vscode/configuration';
+import { openUrl } from '../../system/vscode/utils';
+import type { SubscriptionChangeEvent } from '../gk/account/subscriptionService';
+import type { IntegrationAuthenticationService } from './authentication/integrationAuthentication';
+import type { ConfiguredProviderAuthenticationDescriptor } from './authentication/models';
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 import {
 	CloudIntegrationAuthenticationUriPathPrefix,
 	getSupportedCloudIntegrationIds,
@@ -559,6 +567,7 @@ export class IntegrationService implements Disposable {
 							return integration;
 						}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 						const existingConfigured = await this.getConfigured({
 							id: SelfHostedIntegrationId.CloudGitHubEnterprise,
@@ -566,12 +575,22 @@ export class IntegrationService implements Disposable {
 						if (existingConfigured.length) {
 							const { domain: configuredDomain } = existingConfigured[0];
 							if (configuredDomain == null) throw new Error(`Domain is required for '${id}' integration`);
+=======
+
+						const existingConfigured = this.authenticationService.configured?.get(
+							SelfHostedIntegrationId.CloudGitHubEnterprise,
+						);
+						if (existingConfigured?.length) {
+							const { domain } = existingConfigured[0];
+							if (domain == null) throw new Error(`Domain is required for '${id}' integration`);
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 							integration = new (
 								await import(/* webpackChunkName: "integrations" */ './providers/github')
 							).GitHubEnterpriseIntegration(
 								this.container,
 								this.authenticationService,
 								this.getProvidersApi.bind(this),
+<<<<<<< HEAD
 								configuredDomain,
 								id,
 							);
@@ -587,6 +606,17 @@ export class IntegrationService implements Disposable {
 						throw new Error(`Domain is required for '${id}' integration`);
 					}
 >>>>>>> 97f89b4d6 (Makes sure that cloud version of GitHubEnterprise is used when needed)
+=======
+								domain,
+								id,
+							);
+							break;
+						}
+
+						throw new Error(`Domain is required for '${id}' integration`);
+					}
+
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 					integration = new (
 						await import(/* webpackChunkName: "integrations" */ './providers/github')
 					).GitHubEnterpriseIntegration(
@@ -1109,6 +1139,17 @@ export class IntegrationService implements Disposable {
 		domain?: string,
 	): IntegrationKey {
 		return isSelfHostedIntegrationId(id) ? (`${id}:${domain}` as const) : id;
+	}
+
+	getConfiguredIntegrationDescriptors(id?: IntegrationId): ConfiguredProviderAuthenticationDescriptor[] {
+		const configured = this.authenticationService.configured;
+		if (id != null) return configured.get(id) ?? [];
+		const results = [];
+		for (const [, descriptors] of configured) {
+			results.push(...descriptors);
+		}
+
+		return results;
 	}
 }
 

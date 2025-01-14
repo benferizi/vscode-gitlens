@@ -4,8 +4,15 @@ import { wrapForForcedInsecureSSL } from '@env/fetch';
 import { HostingIntegrationId, SelfHostedIntegrationId } from '../../../constants.integrations';
 import type { Sources } from '../../../constants.telemetry';
 import type { Container } from '../../../container';
+<<<<<<< HEAD
 import type { ConfiguredIntegrationService } from './configuredIntegrationService';
 import type { IntegrationAuthenticationSessionDescriptor } from './integrationAuthenticationProvider';
+=======
+import type {
+	IntegrationAuthenticationService,
+	IntegrationAuthenticationSessionDescriptor,
+} from './integrationAuthentication';
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 import {
 	CloudIntegrationAuthenticationProvider,
 	LocalIntegrationAuthenticationProvider,
@@ -14,12 +21,17 @@ import type { IntegrationAuthenticationService } from './integrationAuthenticati
 import type { ProviderAuthenticationSession } from './models';
 
 export class GitHubAuthenticationProvider extends CloudIntegrationAuthenticationProvider<HostingIntegrationId.GitHub> {
+<<<<<<< HEAD
 	constructor(
 		container: Container,
 		authenticationService: IntegrationAuthenticationService,
 		configuredIntegrationService: ConfiguredIntegrationService,
 	) {
 		super(container, authenticationService, configuredIntegrationService);
+=======
+	constructor(container: Container, authenticationService: IntegrationAuthenticationService) {
+		super(container, authenticationService);
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 		this.disposables.push(
 			authentication.onDidChangeSessions(e => {
 				if (e.provider.id === this.authProviderId) {

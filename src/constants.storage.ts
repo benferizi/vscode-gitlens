@@ -95,9 +95,18 @@ export type GlobalStorage = {
 	[key in `azure:${string}:projects`]: Stored<StoredAzureProject[] | undefined>;
 };
 
+<<<<<<< HEAD
 export type StoredIntegrationConfigurations = Record<string, StoredConfiguredIntegrationDescriptor[] | undefined>;
 
 export interface StoredConfiguredIntegrationDescriptor {
+=======
+export type StoredIntegrationConfigurations = Record<
+	string,
+	StoredConfiguredProviderAuthenticationDescriptor[] | undefined
+>;
+
+export interface StoredConfiguredProviderAuthenticationDescriptor {
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 	cloud: boolean;
 	integrationId: IntegrationId;
 	domain?: string;
@@ -105,6 +114,7 @@ export interface StoredConfiguredIntegrationDescriptor {
 	scopes: string;
 }
 
+<<<<<<< HEAD
 export interface StoredProductConfig {
 	promos: StoredPromo[];
 }
@@ -119,6 +129,8 @@ export interface StoredPromo {
 	percentile?: number;
 }
 
+=======
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 export type DeprecatedWorkspaceStorage = {
 	/** @deprecated use `confirm:ai:tos:${AIProviders}` */
 	'confirm:sendToOpenAI': boolean;

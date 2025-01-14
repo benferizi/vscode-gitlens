@@ -1,9 +1,13 @@
 import type { RemotesConfig } from '../../config';
 import { SelfHostedIntegrationId } from '../../constants.integrations';
 import type { Container } from '../../container';
+<<<<<<< HEAD
 import type { ConfiguredIntegrationDescriptor } from '../../plus/integrations/authentication/models';
 import { isCloudSelfHostedIntegrationId } from '../../plus/integrations/providers/models';
 import { configuration } from '../../system/-webview/configuration';
+=======
+import type { ConfiguredProviderAuthenticationDescriptor } from '../../plus/integrations/authentication/models';
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 import { Logger } from '../../system/logger';
 import { AzureDevOpsRemote } from './azure-devops';
 import { BitbucketRemote } from './bitbucket';
@@ -78,7 +82,11 @@ const builtInProviders: RemoteProviders = [
 
 export function loadRemoteProviders(
 	cfg: RemotesConfig[] | null | undefined,
+<<<<<<< HEAD
 	configuredIntegrations?: ConfiguredIntegrationDescriptor[],
+=======
+	configuredIntegrations?: ConfiguredProviderAuthenticationDescriptor[],
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 ): RemoteProviders {
 	const providers: RemoteProviders = [];
 
@@ -105,7 +113,11 @@ export function loadRemoteProviders(
 
 	if (configuredIntegrations?.length) {
 		for (const ci of configuredIntegrations) {
+<<<<<<< HEAD
 			if (isCloudSelfHostedIntegrationId(ci.integrationId) && ci.domain) {
+=======
+			if (ci.integrationId === SelfHostedIntegrationId.CloudGitHubEnterprise && ci.domain) {
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 				const matcher = ci.domain.toLocaleLowerCase();
 				const providerCreator = (_container: Container, domain: string, path: string) =>
 					ci.integrationId === SelfHostedIntegrationId.CloudGitHubEnterprise
@@ -167,14 +179,18 @@ function getCustomProviderCreator(cfg: RemotesConfig) {
 	}
 }
 
-export async function getRemoteProviderMatcher(
+export function getRemoteProviderMatcher(
 	container: Container,
 	providers?: RemoteProviders,
-): Promise<(url: string, domain: string, path: string) => RemoteProvider | undefined> {
+): (url: string, domain: string, path: string) => RemoteProvider | undefined {
 	if (providers == null) {
 		providers = loadRemoteProviders(
 			configuration.get('remotes', null),
+<<<<<<< HEAD
 			await container.integrations.getConfigured(),
+=======
+			container.integrations.getConfiguredIntegrationDescriptors(),
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 		);
 	}
 

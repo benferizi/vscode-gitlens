@@ -40,7 +40,11 @@ export class RemotesGitSubProvider extends RemotesGitProviderBase implements Git
 			async function load(this: RemotesGitSubProvider): Promise<GitRemote[]> {
 				const providers = loadRemoteProviders(
 					configuration.get('remotes', this.container.git.getRepository(repoPath!)?.folder?.uri ?? null),
+<<<<<<< HEAD
 					await this.container.integrations.getConfigured(),
+=======
+					this.container.integrations.getConfiguredIntegrationDescriptors(),
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 				);
 
 				try {
@@ -49,7 +53,7 @@ export class RemotesGitSubProvider extends RemotesGitProviderBase implements Git
 						this.container,
 						data,
 						repoPath!,
-						await getRemoteProviderMatcher(this.container, providers),
+						getRemoteProviderMatcher(this.container, providers),
 					);
 					return remotes;
 				} catch (ex) {

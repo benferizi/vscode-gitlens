@@ -2,8 +2,15 @@ import type { Disposable, QuickInputButton } from 'vscode';
 import { env, ThemeIcon, Uri, window } from 'vscode';
 import { HostingIntegrationId, SelfHostedIntegrationId } from '../../../constants.integrations';
 import type { Container } from '../../../container';
+<<<<<<< HEAD
 import type { ConfiguredIntegrationService } from './configuredIntegrationService';
 import type { IntegrationAuthenticationSessionDescriptor } from './integrationAuthenticationProvider';
+=======
+import type {
+	IntegrationAuthenticationService,
+	IntegrationAuthenticationSessionDescriptor,
+} from './integrationAuthentication';
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 import {
 	CloudIntegrationAuthenticationProvider,
 	LocalIntegrationAuthenticationProvider,
@@ -17,10 +24,16 @@ export class GitLabLocalAuthenticationProvider extends LocalIntegrationAuthentic
 	constructor(
 		container: Container,
 		authenticationService: IntegrationAuthenticationService,
+<<<<<<< HEAD
 		configuredIntegrationService: ConfiguredIntegrationService,
 		protected readonly authProviderId: GitLabId,
 	) {
 		super(container, authenticationService, configuredIntegrationService);
+=======
+		protected readonly authProviderId: GitLabId,
+	) {
+		super(container, authenticationService);
+>>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
 	}
 
 	override async createSession(
