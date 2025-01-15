@@ -2,12 +2,16 @@ import type { RemotesConfig } from '../../config';
 import { SelfHostedIntegrationId } from '../../constants.integrations';
 import type { Container } from '../../container';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import type { ConfiguredIntegrationDescriptor } from '../../plus/integrations/authentication/models';
 import { isCloudSelfHostedIntegrationId } from '../../plus/integrations/providers/models';
 import { configuration } from '../../system/-webview/configuration';
 =======
 import type { ConfiguredProviderAuthenticationDescriptor } from '../../plus/integrations/authentication/models';
 >>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
+=======
+import type { ConfiguredIntegrationDescriptor } from '../../plus/integrations/authentication/models';
+>>>>>>> c099605e7 (Rename config integration descriptor)
 import { Logger } from '../../system/logger';
 import { AzureDevOpsRemote } from './azure-devops';
 import { BitbucketRemote } from './bitbucket';
@@ -83,10 +87,14 @@ const builtInProviders: RemoteProviders = [
 export function loadRemoteProviders(
 	cfg: RemotesConfig[] | null | undefined,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	configuredIntegrations?: ConfiguredIntegrationDescriptor[],
 =======
 	configuredIntegrations?: ConfiguredProviderAuthenticationDescriptor[],
 >>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
+=======
+	configuredIntegrations?: ConfiguredIntegrationDescriptor[],
+>>>>>>> c099605e7 (Rename config integration descriptor)
 ): RemoteProviders {
 	const providers: RemoteProviders = [];
 

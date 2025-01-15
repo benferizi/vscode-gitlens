@@ -96,6 +96,7 @@ export type GlobalStorage = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type StoredIntegrationConfigurations = Record<string, StoredConfiguredIntegrationDescriptor[] | undefined>;
 
 export interface StoredConfiguredIntegrationDescriptor {
@@ -107,6 +108,11 @@ export type StoredIntegrationConfigurations = Record<
 
 export interface StoredConfiguredProviderAuthenticationDescriptor {
 >>>>>>> fad5b9277 (Stores and uses stored values for configured integration descriptors)
+=======
+export type StoredIntegrationConfigurations = Record<string, StoredConfiguredIntegrationDescriptor[] | undefined>;
+
+export interface StoredConfiguredIntegrationDescriptor {
+>>>>>>> c099605e7 (Rename config integration descriptor)
 	cloud: boolean;
 	integrationId: IntegrationId;
 	domain?: string;

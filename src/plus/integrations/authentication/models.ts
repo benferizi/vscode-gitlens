@@ -23,7 +23,7 @@ export interface ConfiguredIntegrationDescriptor {
 	readonly expiresAt?: string | Date;
 }
 
-export interface ConfiguredProviderAuthenticationDescriptor {
+export interface ConfiguredIntegrationDescriptor {
 	readonly cloud: boolean;
 	readonly integrationId: IntegrationId;
 	readonly domain?: string;
