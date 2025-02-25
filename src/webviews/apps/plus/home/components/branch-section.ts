@@ -75,6 +75,7 @@ export class GlBranchSection extends LitElement {
 	@property({ type: Array }) branches!: GetOverviewBranch[];
 	@property({ type: Boolean }) isFetching = false;
 
+<<<<<<< HEAD
 	@queryAll('gl-branch-card')
 	private branchCards!: GlBranchCardBase[];
 
@@ -106,6 +107,8 @@ export class GlBranchSection extends LitElement {
 	}
 	private toggleSiblingCardsDebounced = debounce(this.toggleSiblingCards.bind(this), 100);
 
+=======
+>>>>>>> benferizi/bugs/3755-date-filter-is-disappeared-if-no-items-matched-the-filter
 	private renderSectionLabel() {
 		if (this.isFetching || this.branches.length === 0) {
 			return this.label;
@@ -114,9 +117,15 @@ export class GlBranchSection extends LitElement {
 		return `${this.label} (${this.branches.length})`;
 	}
 
+<<<<<<< HEAD
 	override render(): unknown {
 		return html`
 			<gl-section ?loading=${this.isFetching}>
+=======
+	override render() {
+		return html`
+			<gl-section>
+>>>>>>> benferizi/bugs/3755-date-filter-is-disappeared-if-no-items-matched-the-filter
 				<span slot="heading">${this.renderSectionLabel()}</span>
 				<span slot="heading-actions"><slot name="heading-actions"></slot></span>
 				${when(
@@ -125,6 +134,14 @@ export class GlBranchSection extends LitElement {
 						this.branches.map(
 							branch =>
 								html`<gl-branch-card expandable .repo=${this.repo} .branch=${branch}></gl-branch-card>`,
+						),
+					() => html`<p>No ${this.label} branches</p>`,
+				)}
+				${when(
+					this.branches.length > 0,
+					() =>
+						this.branches.map(
+							branch => html`<gl-branch-card .repo=${this.repo} .branch=${branch}></gl-branch-card>`,
 						),
 					() => html`<p>No ${this.label} branches</p>`,
 				)}
