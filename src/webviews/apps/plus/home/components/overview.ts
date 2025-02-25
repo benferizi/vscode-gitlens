@@ -97,11 +97,19 @@ export class GlOverview extends SignalWatcher(LitElement) {
 				label="recent"
 				.isFetching=${isFetching}
 				.repo=${repository.path}
+<<<<<<< HEAD
 				.branches=${overview.recent}
 			>
 				<gl-branch-threshold-filter
 					slot="heading-actions"
 					@gl-change=${this.onChangeRecentThresholdFilter}
+=======
+				.branches=${repository.branches.recent}
+			>
+				<gl-branch-threshold-filter
+					slot="heading-actions"
+					@gl-change=${this.onChangeRecentThresholdFilter.bind(this)}
+>>>>>>> benferizi/bugs/3755-date-filter-is-disappeared-if-no-items-matched-the-filter
 					.options=${[
 						{ value: 'OneDay', label: '1 day' },
 						{ value: 'OneWeek', label: '1 week' },
@@ -111,16 +119,28 @@ export class GlOverview extends SignalWatcher(LitElement) {
 						label: string;
 					}[]}
 					.disabled=${isFetching}
+<<<<<<< HEAD
 					.value=${this._inactiveOverviewState.filter.recent?.threshold}
 				></gl-branch-threshold-filter>
 			</gl-branch-section>
 			${when(
 				this._inactiveOverviewState.filter.stale?.show === true && overview.stale,
+=======
+					.value=${this._overviewState.filter.recent?.threshold}
+				></gl-branch-threshold-filter>
+			</gl-branch-section>
+			${when(
+				this._overviewState.filter.stale?.show === true,
+>>>>>>> benferizi/bugs/3755-date-filter-is-disappeared-if-no-items-matched-the-filter
 				() => html`
 					<gl-branch-section
 						label="stale"
 						.repo=${repository.path}
+<<<<<<< HEAD
 						.branches=${overview.stale!}
+=======
+						.branches=${repository.branches.stale}
+>>>>>>> benferizi/bugs/3755-date-filter-is-disappeared-if-no-items-matched-the-filter
 					></gl-branch-section>
 				`,
 			)}
